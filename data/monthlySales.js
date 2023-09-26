@@ -1,5 +1,16 @@
-const salesData = {
-    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    sales: [0.1, 0.2, 0.15, 0.3, 0.4, 0.35, 0.45, 0.6, 0.55, 0.7, 0.75, 0.8],
-};
+const salesData = [
+    { month: 'Jan', sales: 0.1 },
+    { month: 'Feb', sales: 0.2 },
+    { month: 'Mar', sales: 0.15 },
+    { month: 'Apr', sales: 0.3 },
+    { month: 'May', sales: 0.4 },
+    { month: 'Jun', sales: 0.35 },
+    { month: 'Jul', sales: 0.45 },
+    { month: 'Aug', sales: 0.6 },
+    { month: 'Sep', sales: 0.55 },
+    { month: 'Oct', sales: 0.7 },
+    { month: 'Nov', sales: 0.75 },
+    { month: 'Dec', sales: 0.8 }
+]
+
 module.exports = salesData;
