@@ -1,9 +1,6 @@
 const express = require("express");
-const importedSalesData = require('./data/monthlySales');
-const importedRevData = require('./data/monthlyRevenue')
-const importedProfitsData = require('./data/yearlyProfits')
-const importedEmployeesData = require('./data/departments')
-const businessMetrices = require('./data/businessMetrices')
+const {monthlySalesData, monthlyRevenueData, businessMetricesData, yearProfitsData, departmentsData} = require('./data/data');
+
 
 const app = express();
 app.set("view engine", "ejs");
@@ -22,7 +19,7 @@ app.get("/", (req, res) => {
     salesData: []
   };
   
-  importedSalesData.forEach(item => {
+  monthlySalesData.forEach(item => {
     salesDataLists.salesMonths.push(item.month);
     salesDataLists.salesData.push(item.sales);
   });
@@ -36,7 +33,7 @@ app.get("/", (req, res) => {
     yearProfits: []
   };
   
-  importedProfitsData.forEach(item => {
+  yearProfitsData.forEach(item => {
     profitsDataLists.year.push(item.year);
     profitsDataLists.yearProfits.push(item.yearProfits);
   });
@@ -50,7 +47,7 @@ app.get("/", (req, res) => {
     metricesData: []
   };
   
-  businessMetrices.forEach(item => {
+  businessMetricesData.forEach(item => {
     dataFromMetrices.metrices.push(item.metric);
     dataFromMetrices.metricesData.push(item.metricData);
   });
@@ -64,7 +61,7 @@ app.get("/", (req, res) => {
     revData: []
   };
   
-  importedRevData.forEach(item => {
+  monthlyRevenueData.forEach(item => {
     revenueData.revMonths.push(item.month);
     revenueData.revData.push(item.revenue);
   });
@@ -73,18 +70,18 @@ app.get("/", (req, res) => {
   const {revMonths, revData } = revenueData
 
   // to create 2 arrays 
-  const departmentsData = {
+  const departmentsDataLists = {
     departments: [],
     numberOfEmployees: []
   };
   
-  importedEmployeesData.forEach(item => {
-    departmentsData.departments.push(item.department);
-    departmentsData.numberOfEmployees.push(item.numberOfEmployees);
+  departmentsData.forEach(item => {
+    departmentsDataLists.departments.push(item.department);
+    departmentsDataLists.numberOfEmployees.push(item.numberOfEmployees);
   });
 
   // Object distructuring
-  const { departments, numberOfEmployees } = departmentsData
+  const { departments, numberOfEmployees } = departmentsDataLists
 
   const data = {
     revMonths,
