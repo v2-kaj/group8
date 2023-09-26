@@ -66,7 +66,7 @@ app.get("/", (req, res) => {
   
   importedRevData.forEach(item => {
     revenueData.revMonths.push(item.month);
-    revenueData.revData.push(item.rev);
+    revenueData.revData.push(item.revenue);
   });
 
   // Object distructuring
@@ -85,8 +85,6 @@ app.get("/", (req, res) => {
 
   // Object distructuring
   const { departments, numberOfEmployees } = departmentsData
-
-
 
   const data = {
     revMonths,
