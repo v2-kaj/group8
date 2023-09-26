@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%-include("partials/head")%>
+
+<body>
+  <div class="container">
+    <%-include("partials/nav")%>
+    <main>
+      <%-include("partials/searchbar")%>
+      
+      <h1>Dashboard</h1>
+        <div class="content">
+         <div> 
+          <div class="chart"><canvas id="salesChart"   style="width:100%;max-width:400px"></canvas></div>
+          <div class="chart"><canvas id="myRadarChart" class="chart" style="width:100%;max-width:400px"></canvas></div>
+          
+         </div>
+         
+          <div>
+            <div class="chart"><canvas id="profitsChart" style="width:100%;max-width:400px"></canvas></div>
+            <div class="chart"><canvas id="revenueChart"  style="width:100%;max-width:400px"></canvas></div>
+          </div>
+
+        
+          <div><div class="chart"><canvas id="employeesChart" style="width:100%;max-width:400px"></canvas></div></div>
+          
+          <script>
+            var salesMonths = <%- JSON.stringify(salesMonths) %>;
+            var salesData = <%-JSON.stringify(salesData) %>;
+        
+            new Chart("salesChart", {
+              type: "bar",
+              data: {
+                labels: salesMonths,
+                datasets: [{
+                  backgroundColor: [
+                      "#FDE74C", // Lemon Meringue
+                      "#FF6B6B", // Bubblegum Pink
+                      "#CCFF00", // Electric Lime
+                      "#FFF0F5", // Lavender Blush
+                      "#191970", // Midnight Blueberry
+                      "#FFDB58", // Mustard Gas
+                      "#32CD32", // Alien Green
+                      "#6E5D4E", // Zombie Flesh
+                      "#4682B4", // Smurf Blue
+                      "#FFD700", // Radioactive Yellow
+                      "#00FF00", // Slime Green
+                      "#FFB6C1"  // Unicorn Pink
+                    ],
+                  data: salesData
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {display: false},
+                title: {
+                  display: true,
+                  text: "Monthly Sales"
+                }
+            }
+
+            });
+            // Revenue line chart
+            const revMonths = <%- JSON.stringify(revMonths) %>; 
+            const revData =  <%- JSON.stringify(revData) %>; 
+
+            new Chart("revenueChart", {
+              type: "line",
+              data: {
+                labels: revMonths,
+                datasets: [{
+                  backgroundColor:"rgba(0,0,255,1.0)",
+                  borderColor: "rgba(0,0,255,0.1)",
+                  data: revData
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                  display: false},
+                title: {
+                  display: true,
+                  text: "Monthly Revenue"
+                }
+            }
+            });
+
+            // profit pie chart
+            const year = <%- JSON.stringify(year) %>; 
+            const yearProfits = <%- JSON.stringify(yearProfits) %>; 
+            new Chart("profitsChart", {
+            type: "pie",
+            data: {
+              labels: year,
+              datasets: [{
+                backgroundColor: ["red", "yellow", "blue", "green", "black"],
+                data: yearProfits
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              legend: {display: true},
+              title: {
+                display: true,
+                text: "Profit per year"
+              }
+            }
+          });
+
+          // employee horizontal chat
+
+        
+
+          const depts = <%- JSON.stringify(departments) %>;
+          const numberOfEmployees =  <%- JSON.stringify(numberOfEmployees) %>;
+          new Chart("employeesChart", {
+              type: "horizontalBar",
+              data: {
+                labels: depts,
+                datasets: [{
+                  backgroundColor:"rgba(0,0,255,1.0)",
+                  borderColor: "rgba(0,0,255,0.1)",
+                  data: numberOfEmployees
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                legend: {
+                  display: false},
+                title: {
+                  display: true,
+                  text: "Number of Employees"
+                }
+            }
+            })
+            
+            // Chart.js code for the radar chart
+            var ctx = document.getElementById('myRadarChart').getContext('2d');
+            const metrices = <%- JSON.stringify(metrices) %> ;
+            const data = <%- JSON.stringify(metricesData) %>;
+            var myRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: metrices,
+                    datasets: [{
+                        label: 'Business Metrics',
+                        data: data,
+                        backgroundColor: 'rgba(20, 99, 132, 0.6)',
+                        borderColor: 'rgba(20, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        stepSize: 20
+                    }
+                }
+            }
+          });
+
+
+          </script>
+
+        </div>
+        
+        
+      
+      
+    </main>
+      
+
+  </div>
+
+</body>
+
+</html>
