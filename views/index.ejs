@@ -205,6 +205,7 @@
                 data: {
                     labels: metrices,
                     datasets: [{
+                        display: false,
                         label: 'Business Metrics',
                         data: data,
                         backgroundColor: 'rgba(226, 99, 132, 0.6)',
@@ -214,6 +215,8 @@
                 },
             options: {
                 responsive: true,
+                legend: {
+                  display: false},
                 maintainAspectRatio: false,
                 scale: {
                     ticks: {
