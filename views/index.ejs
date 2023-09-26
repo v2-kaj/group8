@@ -58,7 +58,21 @@
                 title: {
                   display: true,
                   text: "Monthly Sales"
-                }
+                },
+                scales: {
+                  yAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Sales in Million Kwacha"
+                    }
+                  }],
+                  xAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Month"
+                    }
+                  }]
+                }   
             }
 
             });
@@ -84,33 +98,60 @@
                 title: {
                   display: true,
                   text: "Monthly Revenue"
-                }
+                },
+                scales: {
+                  yAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Revenue in Million Kwacha"
+                    }
+                  }],
+                  xAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Month"
+                    }
+                  }]
+                }   
             }
             });
 
             // profit pie chart
-            const year = <%- JSON.stringify(year) %>; 
-            const yearProfits = <%- JSON.stringify(yearProfits) %>; 
-            new Chart("profitsChart", {
-            type: "pie",
-            data: {
-              labels: year,
-              datasets: [{
-                backgroundColor: ["red", "yellow", "blue", "green", "black"],
-                data: yearProfits
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              legend: {display: true},
-              title: {
-                display: true,
-                text: "Profit per year"
-              }
-            }
-          });
-
+            const year = <%- JSON.stringify(year) %>;
+  const yearProfits = <%- JSON.stringify(yearProfits) %>;
+  
+  new Chart("profitsChart", {
+    type: "pie",
+    data: {
+      labels: year,
+      datasets: [{
+        backgroundColor: ["red", "yellow", "blue", "green", "black"],
+        data: yearProfits
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      },
+      title: {
+        display: true,
+        text: "Profit per year in %"
+      },
+      tooltips: {
+        callbacks: {
+          label: function (tooltipItem, data) {
+            const dataset = data.datasets[tooltipItem.datasetIndex];
+            const total = dataset.data.reduce((previousValue, currentValue) => previousValue + currentValue);
+            const currentValue = dataset.data[tooltipItem.index];
+            const percentage = ((currentValue / total) * 100).toFixed(2) + "%";
+            return `${data.labels[tooltipItem.index]}: ${percentage}`;
+          }
+        }
+      }
+    }
+  });
           // employee horizontal chat
 
         
@@ -137,6 +178,21 @@
                   display: true,
                   text: "Number of Employees"
                 }
+                ,
+                scales: {
+                  yAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Department"
+                    }
+                  }],
+                  xAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Number of employees"
+                    }
+                  }]
+                }   
             }
             })
             
@@ -151,8 +207,8 @@
                     datasets: [{
                         label: 'Business Metrics',
                         data: data,
-                        backgroundColor: 'rgba(20, 99, 132, 0.6)',
-                        borderColor: 'rgba(20, 99, 132, 1)',
+                        backgroundColor: 'rgba(226, 99, 132, 0.6)',
+                        borderColor: 'rgba(226, 99, 132, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -165,7 +221,10 @@
                         max: 100,
                         stepSize: 20
                     }
-                }
+                }, title: {
+                display: true,
+                text: "Business Metrices"
+              }
             }
           });
 
