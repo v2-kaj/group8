@@ -1,6 +1,12 @@
 const express = require("express");
-const {monthlySalesData, monthlyRevenueData, businessMetricesData, yearProfitsData, departmentsData} = require('./data/data');
-
+// object destructuring import
+const {
+  monthlySalesData,
+  monthlyRevenueData,
+  businessMetricesData,
+  yearProfitsData,
+  departmentsData
+} = require('./data/data');
 
 const app = express();
 app.set("view engine", "ejs");
@@ -18,41 +24,41 @@ app.get("/", (req, res) => {
     salesMonths: [],
     salesData: []
   };
-  
+
   monthlySalesData.forEach(item => {
     salesDataLists.salesMonths.push(item.month);
     salesDataLists.salesData.push(item.sales);
   });
 
-  // Object distructuring
-  const {salesMonths, salesData } = salesDataLists
+  // Object destructuring
+  const { salesMonths, salesData } = salesDataLists
 
   // to create 2 arrays 
   const profitsDataLists = {
     year: [],
     yearProfits: []
   };
-  
+
   yearProfitsData.forEach(item => {
     profitsDataLists.year.push(item.year);
     profitsDataLists.yearProfits.push(item.yearProfits);
   });
 
-  // Object distructuring
-  const {year, yearProfits } = profitsDataLists
+  // Object destructuring
+  const { year, yearProfits } = profitsDataLists
 
   // to create 2 arrays 
   const dataFromMetrices = {
     metrices: [],
     metricesData: []
   };
-  
+
   businessMetricesData.forEach(item => {
     dataFromMetrices.metrices.push(item.metric);
     dataFromMetrices.metricesData.push(item.metricData);
   });
 
-  // Object distructuring
+  // Object destructuring
   const { metrices, metricesData } = dataFromMetrices
 
   // to create 2 arrays 
@@ -60,27 +66,27 @@ app.get("/", (req, res) => {
     revMonths: [],
     revData: []
   };
-  
+
   monthlyRevenueData.forEach(item => {
     revenueData.revMonths.push(item.month);
     revenueData.revData.push(item.revenue);
   });
 
-  // Object distructuring
-  const {revMonths, revData } = revenueData
+  // Object destructuring
+  const { revMonths, revData } = revenueData
 
   // to create 2 arrays 
   const departmentsDataLists = {
     departments: [],
     numberOfEmployees: []
   };
-  
+
   departmentsData.forEach(item => {
     departmentsDataLists.departments.push(item.department);
     departmentsDataLists.numberOfEmployees.push(item.numberOfEmployees);
   });
 
-  // Object distructuring
+  // Object destructuring
   const { departments, numberOfEmployees } = departmentsDataLists
 
   const data = {
