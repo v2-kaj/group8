@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body>
+    <div class="container">
+      <%-include("partials/nav")%>
+      <main>
+        <%-include("partials/searchBar")%>
+        
+        <h1><%= title %></h1>
+        <a href="/student/update-profile"> Go back</a>
+          <div class="content"> 
+          
+            <div>
+            <h2>Get these to login:</h2>
+            <br>
+            <p> Username: <%=regnumber%></p>
+         
+    
+            <p> password: <%=tempPassword%></p>
+            <br><br>
+          
+          </div>
+      
+         
+
+          
+          
+        </div>
+        
+      </main>
+        
+  
+    </div>
+  
+  </body>
+  
+  </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%- include('./partials/lecturer-nav')%>
+        <main>
+          <%- include('./partials/searchBar')%>
+
+            <h1>Assigned Modules for Lecturer : <%= lecturerName%>
+            </h1>
+            <div class="content">
+              <a href="/lecturers/add-assessment">Add Assement</a>
+
+              <ul>
+                <% modules.forEach(function(module) { %>
+                  <li>
+                    <%= module.title %>
+                  </li>
+                  <% }); %>
+              </ul>
+              <a href="/">Back to Home</a>
+
+
+
+
+
+        </main>
+    </div>
+
+
+    </div>
+
+  </body>
+
+</html>

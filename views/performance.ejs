@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%- include("partials/nav")%>
+        <main>
+          <%- include("partials/searchBar")%>
+
+            <h1>
+              <%= title %>
+            </h1>
+            <div class="content">
+              <% if (programs.length> 0) { %>
+              <div class="chart">
+                <canvas id="performanceChart" style="width:100%;max-width:400px"></canvas>
+                <script>
+
+                  var programs = <%- JSON.stringify(programs) %>;
+                  var avg = <%- JSON.stringify(avg) %>;
+
+                  new Chart("performanceChart", {
+                    type: "horizontalBar",
+                    data: {
+                      labels: programs,
+                      datasets: [{
+                        backgroundColor: [
+                          "springgreen",
+                          "orange",
+                          "magenta",
+                        ],
+                        data: avg
+                      }]
+                    },
+                    options: {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      legend: { display: false },
+                      title: {
+                        display: true,
+                        text: "Programs"
+                      },
+                      scales: {
+                        yAxes: [{
+                          ticks: {
+                            beginAtZero: true
+                          },
+                          scaleLabel: {
+                            display: true,
+                            labelString: "Program Abbreviation"
+                          }
+                        }],
+                        xAxes: [{
+                          ticks: {
+                                beginAtZero: true
+                              },
+                          scaleLabel: {
+                            display: true,
+                            labelString: "Avg Marks out of 100"
+                          }
+                        }]
+                      }
+                    }
+                  })
+
+
+                </script>
+
+
+                <% } else { %>
+                  <p>No avg grades.</p>
+                  <% } %>
+
+              </div>
+              <div>
+
+                <div class="chart">
+                  <canvas id="studentsDataChart" style="width:100%;max-width:400px"></canvas>
+                  <script>
+
+                    var programs = <%- JSON.stringify(programsAb) %>;
+                    var total = <%- JSON.stringify(total) %>;
+
+                    new Chart("studentsDataChart", {
+                      type: "bar",
+                      data: {
+                        labels: programs,
+                        datasets: [{
+                          backgroundColor: [
+                            "red",
+                            "green",
+                            "blue",
+                          ],
+                          data: total
+                        }]
+                      },
+                      options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        legend: { display: false },
+                        title: {
+                          display: true,
+                          text: "Number of students per program"
+                        },
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              stepSize: 1,
+                              beginAtZero: true
+                            },
+                            scaleLabel: {
+                              display: true,
+                              labelString: "Number of Students"
+                            }
+                          }],
+                          xAxes: [{
+                            scaleLabel: {
+                              display: true,
+                              labelString: "Program Abbreviation"
+                            }
+                          }]
+                        }
+                      }
+                    })
+
+
+                  </script>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+  </body>
+
+</html>

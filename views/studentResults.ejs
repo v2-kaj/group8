@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body>
+    <div class="container">
+      <%-include("partials/student-nav")%>
+      <main>
+        <%-include("partials/searchBar")%>
+        
+        <h1><%= title %></h1>
+          <div class="content"> 
+          <a href="/student/results/download-pdf">Download Results as PDF</a>
+          <table>
+            <tr>
+              <th>Module</th>
+              <th>Semester</th>
+              <th>Marks</th>
+             
+            </tr>
+
+            <% grades.forEach(function(grade) { %>
+              <tr>
+                <td>
+                  <%= grade.module_code %>
+                </td>
+                <td>
+                  <%= grade.semester %>
+                </td>
+                <td>
+                  <%= grade.marks %>
+                </td>
+               
+              </tr>
+              <% }); %>
+           
+        </div>
+        
+      </main>
+        
+  
+    </div>
+  
+  </body>
+  
+  </html>

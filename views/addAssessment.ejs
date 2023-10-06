@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%- include("partials/lecturer-nav")%>
+
+        <main>
+          <%- include("partials/searchBar")%>
+
+            <h1>Assessments</h1>
+
+           <a href="/lecturers/add-assessment">Add Assessment</a>
+           <a href="/lecturers/view-assessment">View Assessments</a>
+
+
+            <div class="content">
+              <form method="POST" action="/lecturers/add-assessment">
+               
+                <label for="moduleCode">Select Module Code:</label>
+                <br>
+                <select id="module_code" name="module_code">
+                  <% modules.forEach(function(module) { %>
+                    <option value="<%= module.code %>">
+                      <%= module.code %>
+                    </option>
+                    <% }); %>
+                </select>
+                <br><br>
+                <label for="name">Assigment Name:</label>
+                <br>
+                <input type="text" id="name" name="name" placeholder="eg Midsemester Exam" required>
+                <br>
+                <br>
+
+                <label for="type">Type:</label>
+                <br>
+                <select id="type" name="type" required>
+                  <option value="continuous">Continuous</option>
+                  <option value="final_exam">Final Exam</option>
+                </select><br><br>
+
+                <label for="total_marks">Total Marks:</label><br>
+                <input type="number" id="total_marks" name="total_marks" required>
+                <br>
+                <br>
+                <label for="weight">Weight:</label><br>
+                <input type="number" step="0.1" id="weight" name="weight" required><br>
+                <br>
+                <label for="scheduled_date">Scheduled Date:</label>
+                <br>
+                <input type="date" id="scheduled_date" name="scheduled_date" required><br>
+                <br>
+                <input type="hidden" name="lecturer_id" value="<%= lecturerId %>">
+
+                <button type="submit">Add Assessment</button>
+              </form>
+              
+            </div>
+        </main>
+
+
+    </div>
+
+  </body>
+
+</html>

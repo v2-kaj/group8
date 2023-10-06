@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+  <body>
+    <%-include("partials/searchBar")%>
+    <div class="container">
+      <%-include("partials/nav")%>
+        <main>
+            <h1>
+              <%= title %>
+            </h1>
+            <div class="content">
+            <form action="/students/add-student" method="post">
+              <label for="regnumber">Generated Registration Number:</label>
+              <br>
+              <input disabled type="text" name="regnumber" id="regnumber" value="<%=regnumber%>">
+              <br><br>
+              <label for="regnumber">Temporary Password:</label>
+              <br>
+              <input disabled type="text" name="password" id="password" value="<%=password%>">
+              <br><br>
+              <label for="firstname">First Name</label>
+              <br>
+              <input type="text" name="firstname" value="<%=firstname%>">
+              <br><br>
+
+              <label for="lastname">Last Name</label>
+              <br>
+              <input type="text" name="lastname" id="" value="<%=lastname%>">
+              <br><br>
+              <label for="program">Program:</label>
+              <br>
+              <input type="program" name="program" value="<%=program_id%>" id="browser">
+              <br><br>
+              <input type="submit" value="Proceed to add Student" id="">
+            </form>
+
+
+
+
+        </main>
+
+
+    </div>
+  
+
+  </body>
+
+</html>

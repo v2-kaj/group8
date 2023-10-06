@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+       *{
+      margin: 0;
+      box-sizing: border-box;
+      --background-color: springgreen;
+    }
+      main{
+        display: flex;
+        justify-content: center; /* center holizontally */
+        align-items: center; /* center vertically */
+        background-color: var(--background-color);
+        width: 100vw;
+        height: 100vh;
+      }
+      form{
+        display: flex;
+        justify-content: center; /* center holizontally */
+        align-items: center; /* center vertically */
+        background-color: white;
+        width:25rem;
+        height: 15rem;
+        border-radius: 0.2rem;
+      }
+      [type]{
+        width: 20rem;
+        border: 0px;
+        border-bottom: 1px solid  var(--background-color);
+        padding:0.5rem;
+      }
+      [type="submit"]{
+        background:  var(--background-color);
+        color:white;
+        font-weight: bold;
+      }
+      [type="text"]:hover{
+        border: 0px;
+        border-bottom: 1px solid ;
+      }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h2>Login</h2>
+            <% if (message) { %>
+                <p>
+                    <%= message %>
+                </p>
+                <% } %>
+                    <form class="" action="/student/login" method="post">
+                        <div class="">
+                            Username <br>
+                            <input type="text" name="username">
+                            <br><br>
+                            Password <br>
+                            <input type="password" name="password">
+                            <br><br>
+                            <input type="submit" value="Login">
+                        </div>
+                    </form>
+        </section>
+    </main>
+</body>
+
+</html>

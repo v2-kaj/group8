@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%-include("partials/nav")%>
+        <main>
+          <%-include("partials/searchBar")%>
+
+            <h1>
+              <%= title %>
+            </h1>
+            <div class="content"> </div>
+            <form action="/lecturers/add-lecturer" method="post">
+              <label for="firstname">First Name</label>
+              <br>
+              <input type="text" name="firstname" id="">
+              <br><br>
+
+              <label for="lastname">Last Name</label>
+              <br>
+              <input type="text" name="lastname" id="">
+              <br><br>
+            
+              <label for="department">Department:</label>
+              <br>
+              <input list="departments" name="department" id="department">
+              
+              <datalist id="departments">
+                <% departments.forEach(function(department) { %>
+                  <option value="<%= department.id %>"><%= department.name %></option>
+                <% }); %>
+              </datalist>        
+              <br><br>
+              <input type="submit" value="Add Lecturer" id="">
+            </form>
+
+
+
+
+        </main>
+
+
+    </div>
+
+  </body>
+
+</html>

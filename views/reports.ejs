@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+<%- include('./partials/head') %>
 
-<%-include("partials/head")%>
+  <body>
+    <div class="container">
+      <%- include("partials/nav")%>
+        <main>
+          <%- include("partials/searchBar")%>
 
-<body>
-  <div class="container">
-    <%-include("partials/nav")%>
-    <main>
-      <%-include("partials/searchbar")%>
-      <h1><%= title %></h1>
-        <div class="content">
-          
-        </div>
+            <h1>
+              <%= title %>
+            </h1>
+            <div class="content">
+             
+                  <div>
+                    <table border="1">
+                      <thead>
+                          <tr>
+                              <th>Firstname</th>
+                              <th>Regnumber</th>
+                              <th>Modules</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <% for (let i = 0; i < students.length; i++) { %>
+                              <tr>
+                                  <td><%= students[i].firstname %> <%= students[i].lastname %></td>
+                                  <td><%= students[i].regnumber %></td>
+                                  <td>
+                                      <table border="1">
+                                          <thead>
+                                              <tr>
+                                                  <th>Module Name</th>
+                                                  <th>Semester</th>
+                                                  <th>Marks</th>
+
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <% for (let j = 0; j < students[i].modules.length; j++) { %>
+                                                  <tr>
+                                                      <td><%= students[i].modules[j].module_name %></td>
+                                                      <td><%= students[i].modules[j].semester %></td>
+                                                      <td><%= students[i].modules[j].marks %></td>
+                                                  </tr>
+                                              <% } %>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                                  <td><button><a href="/send-results/<%= encodeURIComponent(students[i].regnumber)%>">Send results to <%=students[i].firstname %>'s Guardian</a></button></td>
+                              </tr>
+                          <% } %>
+                      </tbody>
+                  </table>
+              
+                  </div>
+
+            </div>
+    </div>
+
     </main>
-  </div>
-</body>
+    </div>
+
+  </body>
+
 </html>

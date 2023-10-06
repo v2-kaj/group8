@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%-include("partials/nav")%>
+        <main>
+          <%-include("partials/searchBar")%>
+
+          <h1>Lecturer: <%=lecturerName %></h1>
+            <div class="content"> 
+
+            <form action="/lecturers/add-modules" method="post">
+              
+                      
+              <label for="modules">Select Modules</label>
+              <br>
+                      <select id="modules" name="modules" multiple>
+                              <% modules.forEach(function(module) { %>
+                                <option value="<%= module.code %>"><%= module.title %></option>
+                              <% }); %>
+                            </select>     
+              <br><br>
+              <input type="submit" value="Assign Module" id="">
+            </form>
+
+
+
+
+        </main>
+
+
+    </div>
+
+  </body>
+
+</html>

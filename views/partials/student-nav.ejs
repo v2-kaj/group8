@@ -1,0 +1,28 @@
+<nav>
+
+    <h1>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+
+        </div>
+
+        <i class="material-icons">stream</i> Workflow
+    </h1>
+
+    <br>
+    <ul id="nav-links" class="nav-list">
+        <li><a href="/student" class="<%= active === 'Student' ? 'active' : ''%>"><i class="material-icons">dashboard</i>
+                Dashboard</a></li>
+        <li><a href="/student/results" class="<%= active === 'Results' ? 'active' : ''%>"><i class="material-icons">people</i>
+                Results</a></li>
+        <li><a href="/assignments" class="<%= active === 'Assignments' ? 'active' : ''%>"> <i
+                    class="material-icons">work</i>
+                Assignments</a></li>
+                <li><a href="/student/logout" class="<%= active === 'Logout' ? 'active' : ''%>"> <i
+                    class="material-icons">work</i>
+                Logout</a></li>
+        
+    </ul>
+</nav>

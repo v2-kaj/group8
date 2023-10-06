@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+    <body>
+      
+        <div class="container">
+           
+            <%- include("partials/nav")%>
+            
+                <main>
+                    <%- include('partials/searchBar') %>
+                    <h1>Send Report to the parent via email</h1>
+                    <div class="content">
+                        <form action="/send-results/<%= encodeURIComponent(regnumber)%>/<%= encodeURIComponent(email)%>" method="post">
+                        <table>
+                            <tr>
+                                <th>Module</th>
+                                <th>Semester</th>
+                                <th>Marks</th>
+                            </tr>
+                            <% results.forEach(function(result){ %>
+                                <tr>
+                                    <td><input disabled name="module" type="text" value="<%= result.title %>"></td>
+                                    <td><%= result.semester %></td>
+                                    <td><%= result.marks %></td>
+                                </tr>
+                           <% }) %>
+
+                        </table>
+                        <h3>Remarks</h3>
+                            <textarea name="comments" id="" cols="20" rows="5"></textarea>
+                            <br>
+                            <input type="submit" value="Send">
+                    
+                        </form>
+
+                    </div>
+
+
+
+                </main>
+
+        </div>
+
+    </body>
+
+</html>

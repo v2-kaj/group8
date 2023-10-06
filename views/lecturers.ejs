@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%-include("partials/nav")%>
+        <main>
+          <%-include("partials/searchBar")%>
+            <h1>
+              <%= title %>
+            </h1>
+            <br>
+            <div>
+              <a href="/lecturers/add-lecturer">Add a new Lecturer</a>
+            </div>
+            <br>
+            <div class="content">
+             
+              <table>
+                <tr>
+                  <th>Employment ID</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Department</th>
+                </tr>
+
+                <% lecturers.forEach(function(lecturer) { %>
+                  <tr>
+                    <td>
+                      <%= lecturer.id %>
+                    </td>
+                    <td>
+                      <%= lecturer.firstname %>
+                    </td>
+                    <td>
+                      <%= lecturer.lastname %>
+                    </td>
+                    <td>
+                      <%= lecturer.department %>
+                    </td>
+                  </tr>
+                  <% }); %>
+              </table>
+            </div>
+
+
+
+
+
+
+        </main>
+
+
+    </div>
+
+  </body>
+
+</html>

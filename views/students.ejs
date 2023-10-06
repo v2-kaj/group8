@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%- include("partials/nav")%>
+        <main>
+          <%- include("partials/searchBar")%>
+
+            <h1>
+              <%= title %>
+            </h1>
+            <div>
+              <a href="/students/add-student">Add a new student</a>
+            </div>
+            <div class="content">
+              <% if (students.length> 0) { %>
+                <div>
+                  <table>
+                    <tr>
+                      <th>Regnumber</th>
+                      <th>Firstname</th>
+                      <th>Lastname</th>
+                      <th>Program</th>
+                    </tr>
+
+                    <% students.forEach(function(student) { %>
+                      <tr>
+                        <td>
+                          <%= student.regnumber %>
+                        </td>
+                        <td>
+                          <%= student.firstname %>
+                        </td>
+                        <td>
+                          <%= student.lastname %>
+                        </td>
+                        <td>
+                          <%= student.abbreviation %>
+                        </td>
+                        <td>
+                          <button><a href="/delete-student/<%= encodeURIComponent(student.regnumber)%>">Delete
+                              Student</a></button>
+                        </td>
+                      </tr>
+                      <% }); %>
+                  </table>
+                </div>
+
+                <% } else { %>
+                  <p>No student registered so far.</p>
+                  <% } %>
+
+            </div>
+    </div>
+
+
+    </main>
+
+
+    </div>
+
+  </body>
+
+</html>

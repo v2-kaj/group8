@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+  <body>
+    <div class="container">
+      <%-include("partials/nav")%>
+        <main>
+          <%-include("partials/searchBar")%>
+
+            <h1>
+              <%= title %>
+            </h1>
+            <div class="content"> 
+            <form action="/students/add-student" method="post">
+              <label for="firstname">First Name</label>
+              <br>
+              <input type="text" name="firstname" id="">
+              <br><br>
+
+              <label for="lastname">Last Name</label>
+              <br>
+              <input type="text" name="lastname" id="">
+              <br><br>
+            
+              <label for="program">Program:</label>
+              <br>
+              <input list="program" name="program" id="browser">
+              
+              <datalist id="program">
+                <% programs.forEach(function(program) { %>
+                  <option value="<%= program.program_id %>"><%= program.name %></option>
+                <% }); %>
+              </datalist>
+          
+              <br><br>
+
+              <button type="submit" name="postButton" formaction="/students/add-student">Verify Before Adding</button>
+            </form>
+          </div>
+
+        </main>
+
+
+    </div>
+
+  </body>
+
+</html>

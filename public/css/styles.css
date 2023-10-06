@@ -2,8 +2,15 @@
   box-sizing: border-box;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  --navbgcolor: rgb(121, 20, 215);
+  --navbgcolor: #4caf50;
+  --inputbgcolor: seagreen;
+  padding: 0;
 
+}
+
+body {
+  background-color: rgb(246, 246, 182);
+  font-size: x-large;
 }
 
 .hamburger-menu {
@@ -22,17 +29,18 @@
 .container {
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  padding: 0.1rem;
+  height: auto;
+
 
 }
 
 nav {
   flex: 1;
+
   background-color: var(--navbgcolor);
   padding: 0.5rem;
   border: 1px solid var(--navbgcolor);
-  border-radius: 0.5rem 0 0 0.5rem;
+
   height: 100vh;
   position: fixed;
 
@@ -40,7 +48,7 @@ nav {
 
 
 .active {
-  background-color: rgb(83, 48, 165);
+  background-color: #347935;
 }
 
 .nav-list {
@@ -50,8 +58,9 @@ nav {
 }
 
 .nav-list li {
-  width: 12.5rem;
+  width: 17rem;
   margin-bottom: 5px;
+
 
 }
 
@@ -62,6 +71,7 @@ nav {
   display: block;
   font-size: 0.85rem;
   width: 100%;
+  font-size: large;
 
 
 }
@@ -70,7 +80,7 @@ nav {
   display: flex;
   padding-top: 0.4rem;
   width: 100%;
-  background-color: aliceblue;
+
   padding-bottom: -2px;
 }
 
@@ -87,8 +97,11 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: rgb(219, 240, 238);
+  background-color: rgb(255, 255, 255);
   border-radius: 0.4rem;
+  padding: 0.7rem;
+
+
 
 }
 
@@ -99,10 +112,10 @@ nav {
 }
 
 main {
-  flex: 3;
-  margin-left: 13rem;
+  flex: 1;
+  margin-left: 18rem;
   padding-left: 1rem;
-  background-color: aliceblue;
+
 
 }
 
@@ -111,18 +124,86 @@ main {
   position: sticky;
   top: 0;
   padding-bottom: 1rem;
-
-
 }
-
 
 .material-icons {
   vertical-align: middle;
   margin-right: 0.3rem;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+td table {
+  border: none;
+}
+
+th {
+  text-align: left;
+}
+
+td table tr {
+  border-bottom: 1px solid black;
+}
+
+form {
+
+  justify-content: center;
+  /* center holizontally */
+  align-items: center;
+  /* center vertically */
+  background-color: white;
+  width: 25rem;
+
+  border-radius: 0.2rem;
+}
+
+
+[type] {
+  width: 20rem;
+  border: 0px;
+  border-bottom: 1px solid var(--inputbgcolor);
+  padding: 0.5rem;
+}
+
+[type="radio"] {
+  width: 2rem;
+  border: 7px;
+  padding: 0
+}
+
+
+[type="submit"] {
+  background: var(--inputbgcolor);
+  color: white;
+  font-weight: bold;
+
+}
+
+button {
+  background: var(--inputbgcolor);
+  width: 5rem;
+  padding: 0.16rem;
+  border: 0.1rem solid var(--inputbgcolor);
+  border-radius: 0.09rem;
+
+}
+
+[type="text"]:hover {
+  border: 0px;
+  border-bottom: 1px solid;
+}
+
+/* Style the main content area */
+main {
+  padding: 20px;
+}
+
 @media only screen and (max-width: 600px) {
- 
+
   .hamburger-menu {
     display: flex;
     float: right;
@@ -140,7 +221,7 @@ main {
   }
 
   nav {
-    border-radius:0;
+    border-radius: 0;
 
     position: static;
   }
@@ -149,15 +230,16 @@ main {
     flex-grow: 0;
     margin: 0;
   }
+
   .nav-list li {
     width: 100%;
-    
-  
+
+
   }
 
   #nav-links {
     display: none;
-    
+
     flex-direction: column;
     z-index: 1;
   }
@@ -166,12 +248,48 @@ main {
     display: block;
   }
 
+  input {
+    width: 100%;
+  }
 
+  form {
+
+    justify-content: center;
+    /* center holizontally */
+    align-items: center;
+    /* center vertically */
+    background-color: white;
+    width: 100%;
+
+    border-radius: 0.2rem;
+  }
+
+  [type] {
+    width: 100%;
+
+  }
+
+  .content,
+  main {
+    margin: 0.1rem;
+
+    padding: 0.2rem;
+
+
+
+  }
+
+  th,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  th {
+    text-align: left;
+  }
 }
 
 
 
-
-
-
-
+}
